@@ -56,3 +56,12 @@ dataset在组件中可以定义数据，这些数据将会通过事件传递给 
 小程序迭代的比较快，每次发布了新的代码，都	更新不及时，着急的时候，得删除了重新搜索才可以。觉得很		 麻烦，就查了一些方法。
 
 ## 12 mpvue实现vue开发
+## 13关于小程序 scroll-view 左右横向滑动没有效果（无法滑动）问题
+小程序组件 scroll-view 中分别有上下竖向滑动和左右横向滑动之分，在这次项目中刚好需要用到横向滑动，但在测试过程中发现横向滑动没有了效果（静止在那里没移动过），经调试发现：
+- 1.scroll-view 中的需要滑动的元素不可以用 float 浮动；
+- 2.scroll-view 中的包裹需要滑动的元素的大盒子用 display:flex; 是没有作用的；
+- 3.scroll-view 中的需要滑动的元素要用 dislay:inline-block; 进行元素的横向编排；
+- 4.包裹 scroll-view 的大盒子有明确的宽和加上样式-->  overflow:hidden;white-space:nowrap;
+## 微信小程序wx.uploadFile的两个坑
+
+var data = JSON.parse(res.data)　　//坑2：与wx.request不同，wx.uploadFile返回的是[字符串]，需要自己转为JSON格式
